@@ -5,7 +5,7 @@ ChatGPT-Rust is a Rust implementation of OpenAI's ChatGPT. This project aims to 
 ## Getting Started
 
 ### Example
-![image]()
+![image](https://raw.githubusercontent.com/RevAtN/chatGPT-rust/main/example.gif)
 
 ### Prerequisites
 
@@ -45,5 +45,12 @@ This project is licensed under the [MIT License](LICENSE.md).
 - OpenAI for the development of the ChatGPT model and API.
 - The Rust community for providing guidance and resources.
 
+## Credits
+
+- Architecture inspired by [Dave Shapiro's](https://www.patreon.com/daveshap) work
+- Dave Shapiro's YT video Series:
+  - [Tutorial: DIY ChatGPT with Long Term Memories](https://www.youtube.com/watch?v=c3aiCrk0F0U)
+  - [DIY ChatGPT: Enhancing RAVEN's long-term memories and starting to work on self reflection](https://www.youtube.com/watch?v=QGLF3UbDf7g)
+  - [RAVEN Dream Sequence - Memory Consolidation and Insight Extraction for AGI or cognitive architecture](https://www.youtube.com/watch?v=QGLF3UbDf7g)
 
 
