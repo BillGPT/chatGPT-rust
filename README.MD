@@ -1,6 +1,19 @@
 # ChatGPT-Rust v0.1.0 README
 
-ChatGPT-Rust is a Rust implementation of OpenAI's ChatGPT. This project aims to bring the power of the ChatGPT model to the Rust ecosystem and eventually deploy it on WebAssembly (WASM) for seamless integration into web applications. The project is being developed iteratively, with several versions planned, including a version that supports ChatGPT's permanent memory feature.
+ChatGPT-Rust🦀️ is a Rust implementation of OpenAI's ChatGPT. This project aims to bring the power of the ChatGPT model to the Rust ecosystem and eventually deploy it on WebAssembly (WASM) for seamless integration into web applications. The project is being developed iteratively, with several versions planned, including a version that supports ChatGPT's permanent memory feature.
+
+## Progress
+### Completed
+- [x] Stream Output
+- [x] AI Talks to AI(/git/v0.1.0s_fix.rs)
+- [x] Formatted Preservation of Historical Conversations
+- [x] Cosine Similarity Calculation, Find the 9 Most Relevant Historical Conversations
+
+### TODO
+- [ ] Fix Long Term Chat Prompt
+- [ ] Write WASM Version
+- [ ] Telegram Bot Branches
+- [ ] ...
 
 ## Getting Started
 
