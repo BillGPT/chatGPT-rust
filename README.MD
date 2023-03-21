@@ -25,6 +25,27 @@ export OPENAI_API_KEY=sk-...
 4. Run the project using Cargo:
 cargo run
 
+### API
+gpt-3.5-turbo:
+```
+        let payload = serde_json::json!({
+            "model": "gpt-3.5-turbo",
+            "messages": messages,
+            "temperature": 1.0,
+            "top_p": 1.0,
+            "n": 1,
+            "stream": true,
+            "presence_penalty": 0,
+            "frequency_penalty": 0
+        });
+```
+text-embedding-ada-002
+```
+        let payload_embedding = serde_json::json!({
+            "model": "text-embedding-ada-002",
+            "input": result_text
+        });
+```
 
 ## Features
 
