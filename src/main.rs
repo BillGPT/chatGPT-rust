@@ -1,4 +1,4 @@
-// v0.1.0实现了循环对话交互，还没有部署到wasm/yew上
+// v0.1.2具备正确的prompt
 use futures_util::stream::StreamExt;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
@@ -28,7 +28,8 @@ async fn summarize_memories(
         .collect::<Vec<&str>>()
         .join("\n");
     println!("input_text: {}", input_text.clone());
-    let prompt = format!("请总结以下文本:\n{}", input_text);
+    let prompt = format!("根据以下历史对话，为接下来的聊天提供有用的信息概要:\n{}", input_text);
+    
 
     let payload = serde_json::json!({
         "model": "gpt-3.5-turbo",
@@ -233,7 +234,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         // Add the memory summary to the conversation
         let messages = vec![
-            serde_json::json!({ "role": "system", "content": "我是一个名为GPT3的AI。我的主要目标是帮助用户规划、头脑风暴、概述以及构建他们的小说作品。"}),
+            serde_json::json!({ "role": "system", "content": "您正在与一个具有记忆功能的ChatGPT交流。它可以根据历史对话为您提供有关建议。"}),
             serde_json::json!({ "role": "user", "content": memory_summary }),
         ];
 
