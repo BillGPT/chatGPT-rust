@@ -8,9 +8,10 @@ ChatGPT-Rust🦀️ is a Rust implementation of OpenAI's ChatGPT. This project a
 - [x] AI Talks to AI(/git/v0.1.0s_fix.rs)
 - [x] Formatted Preservation of Historical Conversations
 - [x] Cosine Similarity Calculation, Find the 9 Most Relevant Historical Conversations
+- [x] Fix Long Term Chat Prompt
 
 ### TODO
-- [ ] Fix Long Term Chat Prompt
+- [ ] Enhance Long Term Chat Prompt
 - [ ] Write WASM Version
 - [ ] Telegram Bot Branches
 - [ ] ...
