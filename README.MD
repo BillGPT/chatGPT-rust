@@ -18,7 +18,7 @@ ChatGPT-Rust🦀️ is a Rust implementation of OpenAI's ChatGPT. This project a
 ## Getting Started
 
 ### Example
-![image](https://raw.githubusercontent.com/RevAtN/chatGPT-rust/main/example.gif)
+![image](https://raw.githubusercontent.com/RevAtN/chatGPT-rust/main/demo.gif)
 
 ### Prerequisites
 
