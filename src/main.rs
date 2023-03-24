@@ -1,4 +1,4 @@
-// v0.1.2具备正确的prompt
+// v0.1.2 implements simple memory and has a correct prompt
 use futures_util::stream::StreamExt;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
@@ -28,8 +28,7 @@ async fn summarize_memories(
         .collect::<Vec<&str>>()
         .join("\n");
     println!("input_text: {}", input_text.clone());
-    let prompt = format!("根据以下历史对话，为接下来的聊天提供有用的信息概要:\n{}", input_text);
-    
+    let prompt = format!("Based on the following historical conversation, provide a useful summary of information for the upcoming chat:\n{}", input_text);
 
     let payload = serde_json::json!({
         "model": "gpt-3.5-turbo",
@@ -188,16 +187,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_url_embedding = "https://api.openai.com/v1/embeddings";
 
     loop {
-        // 用户输入content内容
         print!("🧑‍💻：");
         io::stdout().flush().unwrap();
         let mut content = String::new();
         stdin()
             .read_line(&mut content)
             .expect("Error reading input");
-        let content = content.trim().to_string(); // 移除行尾的换行符
+        let content = content.trim().to_string();
         let mut result_text = content.clone();
-        print!("🦾🤖：");
 
         let payload_embedding = serde_json::json!({
             "model": "text-embedding-ada-002",
@@ -227,16 +224,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         // Summarize the memories
         let memory_summary = summarize_memories(&similar_memories, &api_key).await?;
         let memory_summary = format!(
-            "这是相关历史对话的总结: {} - USER: {}",
+            "This is the summary of the relevant historical conversation: {} - USER: {}",
             memory_summary, content
         );
         println!("memory_summary: {}", memory_summary);
 
         // Add the memory summary to the conversation
         let messages = vec![
-            serde_json::json!({ "role": "system", "content": "您正在与一个具有记忆功能的ChatGPT交流。它可以根据历史对话为您提供有关建议。"}),
+            serde_json::json!({ "role": "system", "content": "You are communicating with a ChatGPT that has memory function. It can provide you with advice based on previous conversations."}),
             serde_json::json!({ "role": "user", "content": memory_summary }),
         ];
+
+
+        println!("\n🤖：");
 
         let payload = serde_json::json!({
             "model": "gpt-3.5-turbo",
@@ -269,7 +269,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let chunk = chunk?;
             let mut utf8_str = String::from_utf8_lossy(&chunk).to_string();
             if i == 0 {
-                // TODO：修改utf8_str的值为utf8_str本身的倒数第二行的值。
                 let lines: Vec<&str> = utf8_str.lines().collect();
                 let updated_utf8_str = if lines.len() >= 2 {
                     lines[lines.len() - 2].to_string()
